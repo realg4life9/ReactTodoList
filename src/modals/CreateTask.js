@@ -15,6 +15,13 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
         }
     }
 
+    const handleSave = () =>{
+        let taskObj = {}
+        taskObj["Name"] = taskName
+        taskObj["Description"] = description
+        save(taskObj)
+    }
+
     return (
         <Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>Create Task</ModalHeader>
@@ -31,7 +38,7 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
                </form>
             </ModalBody>
             <ModalFooter>
-            <Button color="primary" onClick={toggle}>
+            <Button color="primary" onClick={handleSave}>
                 Create
             </Button>{' '}
             <Button color="secondary" onClick={toggle}>
