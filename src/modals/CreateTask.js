@@ -6,20 +6,24 @@ const CreateTaskPopup = ({modal, toggle, save}) => {
     const [description, setDescription] = useState('');
 
     const handleChange = (e) => {
-        const {name, value} =e.target
+        const { name, value } = e.target;
 
-        if(name === "taskName"){
-            setTaskName(value)
-        }else{
-            setDescription(value)
+        if (name === "taskName") {
+            setTaskName(value);
+        } else if (name === "description") {
+            setDescription(value);
         }
     }
 
-    const handleSave = () =>{
-        let taskObj = {}
-        taskObj["Name"] = taskName
-        taskObj["Description"] = description
-        save(taskObj)
+    const handleSave = (e) => {
+        e.preventDefault();
+        let taskObj = {
+            Name: taskName,
+            Description: description
+        };
+        save(taskObj);
+        setTaskName('');
+        setDescription('');
     }
 
     return (
